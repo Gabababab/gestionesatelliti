@@ -62,10 +62,10 @@
 
 
 					<form:form modelAttribute="update_satellite_attr" method="post"
-						action="${pageContext.request.contextPath}/satellite/update/${update_satellite_attr.id}" class="row g-3" novalidate="novalidate">
+						action="${pageContext.request.contextPath}/satellite/update" class="row g-3" novalidate="novalidate">
 
 
-						<div class="col-md-6">
+												<div class="col-md-6">
 							<label for="denominazione" class="form-label">Denominazione <span
 								class="text-danger">*</span></label>
 							<spring:bind path="denominazione">
