@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="it" class="h-100">
 <head>
@@ -118,15 +119,15 @@
 							<form:errors path="dataRientro" cssClass="error_field" />
 						</div>
 
-							<c:if test = "${edit_satellite_attr.dataRientro == null}">
+							<c:if test = "${update_satellite_attr.dataRientro == null}">
 									<div class="col-md-3">
 										<label for="stato" class="form-label">Stato <span class="text-danger">*</span></label>
 										<spring:bind path="stato">
 										    <select class="form-select" id="stato" name="stato" required>
 										    	<option value="" selected> - Selezionare - </option>
-										    	<option value="IN_MOVIMENTO" ${edit_satellite_attr.stato == 'IN_MOVIMENTO'?'selected':''}>IN_MOVIMENTO</option>
-										      	<option value="FISSO" ${edit_satellite_attr.stato == 'FISSO'?'selected':''}>FISSO</option>
-										      	<option value="DISATTIVATO" ${edit_satellite_attr.stato == 'DISATTIVATO'?'selected':''}>DISATTIVATO</option>
+										    	<option value="IN_MOVIMENTO" ${update_satellite_attr.stato == 'MOVIMENTO'?'selected':''}>IN MOVIMENTO</option>
+										      	<option value="FISSO" ${update_satellite_attr.stato == 'FISSO'?'selected':''}>FISSO</option>
+										      	<option value="DISATTIVATO" ${update_satellite_attr.stato == 'DISATTIVATO'?'selected':''}>DISATTIVATO</option>
 										    </select>
 									    </spring:bind>
 									</div>
@@ -134,8 +135,6 @@
 
 
 						<div class="col-12">
-							<input type="hidden" name="idImpiegato"
-								value="${update_satellite_attr.id}">
 							<button type="submit" name="submit" value="submit" id="submit"
 								class="btn btn-primary">Conferma</button>
 						</div>

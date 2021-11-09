@@ -28,7 +28,7 @@ public class SatelliteController {
 
 	@Autowired
 	private SatelliteService satelliteService;
-	
+
 	@GetMapping
 	public ModelAndView listAll() {
 		ModelAndView mv = new ModelAndView();
@@ -37,7 +37,7 @@ public class SatelliteController {
 		mv.setViewName("satellite/list");
 		return mv;
 	}
-	
+
 	@GetMapping("/search")
 	public String search() {
 		return "satellite/search";
@@ -49,21 +49,21 @@ public class SatelliteController {
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";
 	}
-	
+
 	@GetMapping("/listByNonDisattivatiDaDueAnni")
 	public String listByNonDisattivatiDaDueAnni(ModelMap model) {
 		List<Satellite> results = satelliteService.findSatellitiDisattivatiELanciatiDueAnniFa();
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";
 	}
-	
+
 	@GetMapping("/listByDisattivatiNonRientrati")
 	public String listByDisattivatiNonRientrati(ModelMap model) {
 		List<Satellite> results = satelliteService.findSatellitiDisattivatiNonAncoraRientrati();
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";
 	}
-	
+
 	@GetMapping("/listByFissiInOrbitaDaDieciAnni")
 	public String listByFissiInOrbitaDaDieciAnni(ModelMap model) {
 		List<Satellite> results = satelliteService.findSatellitiFissiInOrbitaDaDieciAnni();
@@ -89,7 +89,7 @@ public class SatelliteController {
 		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
 		return "redirect:/satellite";
 	}
-	
+
 	@GetMapping("/preparedelete/{idSatellite}")
 	public String remove(Model model, @PathVariable(required = true) Long idSatellite) {
 		model.addAttribute("delete_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
@@ -111,15 +111,13 @@ public class SatelliteController {
 		return "satellite/update";
 	}
 
-	@PostMapping("/update/{idSatellite}")
+	@PostMapping("/update")
 	public String update(@Valid @ModelAttribute("update_satellite_attr") Satellite daModificare, BindingResult result,
-			@PathVariable(required = true) Long idSatellite, Model model, RedirectAttributes redirectAttrs) {
-
-		daModificare.setId(idSatellite);
+			Model model, RedirectAttributes redirectAttrs) {
 
 		if (result.hasErrors())
-			return "satellite/insert";
-		
+			return "satellite/update";
+
 		satelliteService.aggiorna(daModificare);
 		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
 		return "redirect:/satellite";
@@ -130,5 +128,5 @@ public class SatelliteController {
 		model.addAttribute("show_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/show";
 	}
-	
+
 }
