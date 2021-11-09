@@ -43,6 +43,10 @@ public class Satellite {
 	@Enumerated(EnumType.STRING)
 	private StatoSatellite stato;
 
+	public Satellite() {
+
+	}
+
 	public Satellite(@NotBlank(message = "{denominazione.notblank}") String denominazione,
 			@NotBlank(message = "{codice.notblank}") String codice,
 			@NotNull(message = "{dataLancio.notnull}") Date dataLancio,

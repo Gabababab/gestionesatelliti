@@ -1,5 +1,10 @@
 package it.prova.gestionesatelliti.repository;
 
-public interface SatelliteRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import it.prova.gestionesatelliti.model.Satellite;
+
+
+public interface SatelliteRepository extends CrudRepository<Satellite, Long>{
 
 }
