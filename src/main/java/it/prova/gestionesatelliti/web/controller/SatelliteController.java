@@ -67,7 +67,7 @@ public class SatelliteController {
 		return "redirect:/satellite";
 	}
 	
-	@GetMapping("/remove/{idSatellite}")
+	@GetMapping("/preparedelete/{idSatellite}")
 	public String remove(Model model, @PathVariable(required = true) Long idSatellite) {
 		model.addAttribute("delete_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/delete";
@@ -82,7 +82,7 @@ public class SatelliteController {
 		return "redirect:/satellite";
 	}
 
-	@GetMapping("infoupdate/{idSatellite}")
+	@GetMapping("prepareupdate/{idSatellite}")
 	public String infoupdate(Model model, @PathVariable(required = true) Long idSatellite) {
 		model.addAttribute("update_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/update";
