@@ -85,7 +85,7 @@
 						</div>
 						
 						<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date'
-							value='${insert_satellite_attr.dataLancio}' />
+							value='${insert_satellite_attr.dataRientro}' />
 						<div class="col-md-3">
 							<label for="dataRientro" class="form-label">Data di
 								Rientro <span class="text-danger">*</span>

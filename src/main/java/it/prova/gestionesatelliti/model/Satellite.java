@@ -34,7 +34,7 @@ public class Satellite {
 	@Column(name = "datalancio")
 	private Date dataLancio;
 
-	@NotNull(message = "{dataRientro.notnull}")
+//	@NotNull(message = "{dataRientro.notnull}")
 	@Column(name = "datarientro")
 	private Date dataRientro;
 
