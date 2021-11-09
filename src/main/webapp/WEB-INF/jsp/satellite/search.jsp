@@ -78,6 +78,19 @@
 								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/insert">Add New</a>
 								<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
 							</div>
+							
+							<div class="col-12">
+								<a>Ricerca i satelliti lanciati da piu di due anni non disattivati</a>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/listByNonDisattivatiDaDueAnni">Ricerca</a>
+							</div>
+							<div class="col-12">
+								<a>Ricerca i satelliti disattivati non rientrati</a>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/listByDisattivatiNonRientrati">Ricerca</a>
+							</div>
+							<div class="col-12">
+								<a>Ricerca i satelliti fissi in orbita da dieci anni</a>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/listByFissiInOrbitaDaDieciAnni">Ricerca</a>
+							</div>
 		
 						</form>
   

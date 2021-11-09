@@ -1,5 +1,6 @@
 package it.prova.gestionesatelliti.web.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.prova.gestionesatelliti.model.Satellite;
+import it.prova.gestionesatelliti.model.StatoSatellite;
 import it.prova.gestionesatelliti.service.SatelliteService;
 
 @Controller
@@ -44,6 +46,27 @@ public class SatelliteController {
 	@PostMapping("/list")
 	public String listByExample(Satellite example, ModelMap model) {
 		List<Satellite> results = satelliteService.findByExample(example);
+		model.addAttribute("satellite_list_attribute", results);
+		return "satellite/list";
+	}
+	
+	@GetMapping("/listByNonDisattivatiDaDueAnni")
+	public String listByNonDisattivatiDaDueAnni(ModelMap model) {
+		List<Satellite> results = satelliteService.findSatellitiDisattivatiELanciatiDueAnniFa();
+		model.addAttribute("satellite_list_attribute", results);
+		return "satellite/list";
+	}
+	
+	@GetMapping("/listByDisattivatiNonRientrati")
+	public String listByDisattivatiNonRientrati(ModelMap model) {
+		List<Satellite> results = satelliteService.findSatellitiDisattivatiNonAncoraRientrati();
+		model.addAttribute("satellite_list_attribute", results);
+		return "satellite/list";
+	}
+	
+	@GetMapping("/listByFissiInOrbitaDaDieciAnni")
+	public String listByFissiInOrbitaDaDieciAnni(ModelMap model) {
+		List<Satellite> results = satelliteService.findSatellitiFissiInOrbitaDaDieciAnni();
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";
 	}
@@ -107,4 +130,5 @@ public class SatelliteController {
 		model.addAttribute("show_satellite_attr", satelliteService.caricaSingoloElemento(idSatellite));
 		return "satellite/show";
 	}
+	
 }

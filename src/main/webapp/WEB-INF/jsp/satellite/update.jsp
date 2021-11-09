@@ -118,23 +118,19 @@
 							<form:errors path="dataRientro" cssClass="error_field" />
 						</div>
 
-						<div class="col-md-3">
-							<label for="stato" class="form-label">Stato <span
-								class="text-danger">*</span></label>
-							<spring:bind path="stato">
-								<select class="form-select ${status.error ? 'is-invalid' : ''}"
-									id="stato" name="stato" required>
-									<option value="" selected>- Selezionare -</option>
-									<option value="MOVIMENTO"
-										${update_satellite_attr.stato == 'MOVIMENTO'?'selected':''}>IN MOVIMENTO</option>
-									<option value="FISSO"
-										${update_satellite_attr.stato == 'FISSO'?'selected':''}>FISSO</option>
-									<option value="DISATTIVATO"
-										${update_satellite_attr.stato == 'DISATTIVATO'?'selected':''}>DISATTIVATO</option>
-								</select>
-							</spring:bind>
-							<form:errors path="stato" cssClass="error_field" />
-						</div>
+							<c:if test = "${edit_satellite_attr.dataRientro == null}">
+									<div class="col-md-3">
+										<label for="stato" class="form-label">Stato <span class="text-danger">*</span></label>
+										<spring:bind path="stato">
+										    <select class="form-select" id="stato" name="stato" required>
+										    	<option value="" selected> - Selezionare - </option>
+										    	<option value="IN_MOVIMENTO" ${edit_satellite_attr.stato == 'IN_MOVIMENTO'?'selected':''}>IN_MOVIMENTO</option>
+										      	<option value="FISSO" ${edit_satellite_attr.stato == 'FISSO'?'selected':''}>FISSO</option>
+										      	<option value="DISATTIVATO" ${edit_satellite_attr.stato == 'DISATTIVATO'?'selected':''}>DISATTIVATO</option>
+										    </select>
+									    </spring:bind>
+									</div>
+								</c:if>
 
 
 						<div class="col-12">

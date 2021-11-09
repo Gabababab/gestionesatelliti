@@ -49,13 +49,14 @@
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Data di Rientro:</dt>
-							  
-							  <c:if test="${show_satellite_attr.dataRientro}!=null">
- 								 <dd class="col-sm-9"><fmt:formatDate type="date" value = "${show_satellite_attr.dataRientro}" /></dd>
-							  </c:if>
-							  <c:if test="${show_satellite_attr.dataRientro}==null">
- 								<dd class="col-sm-9">Non ancora rientrato</dd>
-							  </c:if>
+							  <c:choose>
+								  <c:when test="${show_satellite_attr.dataRientro}!=null">
+								  	<dd class="col-sm-9"><fmt:formatDate type="date" value = "${show_satellite_attr.dataRientro}" /></dd>
+								  </c:when>
+								  <c:otherwise>
+								  	<dd class="col-sm-9">Non ancora rientrato</dd>
+								  </c:otherwise>
+							  </c:choose>
 					    	</dl>
 					    	
 					    	<dl class="row">

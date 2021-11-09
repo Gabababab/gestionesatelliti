@@ -1,6 +1,7 @@
 package it.prova.gestionesatelliti.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionesatelliti.model.Satellite;
+import it.prova.gestionesatelliti.model.StatoSatellite;
 import it.prova.gestionesatelliti.repository.SatelliteRepository;
 
 @Service
@@ -94,6 +96,25 @@ public class SatelliteServiceImpl implements SatelliteService{
 		}
 
 		return typedQuery.getResultList();
+	}
+
+	@Override
+	public List<Satellite> findSatellitiDisattivatiELanciatiDueAnniFa() {
+		Date date=new Date();
+		date.setYear(date.getYear()-2);
+		return repository.findAllByStatoNotAndDataLancioLessThan(StatoSatellite.DISATTIVATO, date);
+	}
+
+	@Override
+	public List<Satellite> findSatellitiDisattivatiNonAncoraRientrati() {
+		return repository.findAllByStatoIsAndDataRientroIsNull(StatoSatellite.DISATTIVATO);
+	}
+
+	@Override
+	public List<Satellite> findSatellitiFissiInOrbitaDaDieciAnni() {
+		Date date=new Date();
+		date.setYear(date.getYear()-10);
+		return repository.findAllByDataLancioIsLessThanAndStatoIs(date ,StatoSatellite.FISSO);
 	}
 
 }
