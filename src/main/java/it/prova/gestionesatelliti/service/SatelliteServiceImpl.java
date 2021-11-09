@@ -11,11 +11,13 @@ import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionesatelliti.model.Satellite;
 import it.prova.gestionesatelliti.repository.SatelliteRepository;
 
+@Service
 public class SatelliteServiceImpl implements SatelliteService{
 
 	@Autowired
